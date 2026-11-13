@@ -1,0 +1,24 @@
+[project]
+name = "lantika2026-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jayy", email = "181741478+GMJayy@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "feedparser>=6.0.14",
+    "yagmail>=0.16.0",
+]
+
+[project.scripts]
+lantika2026-project = "lantika2026_project:main"
+
+[build-system]
+requires = ["uv_build>=0.12.6,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = false
