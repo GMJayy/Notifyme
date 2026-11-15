@@ -120,8 +120,6 @@ Selesai! Total 1 CVE baru diproses dan di-enrich.
 
 ### Patroli otomatis — systemd timer ⏱️
 
-Satu eksekusi = satu siklus penuh, program keluar setelahnya. Untuk pemantauan 24/7, lupakan cron — usang: gak ada logging terstruktur, gak ada catch-up kalau mesin mati, gak bisa di-hardening. systemd timer bawaan semua distro modern dan bisa ketiganya.
-
 **1 — Service** · `/etc/systemd/system/notifyme.service`
 *(sesuaikan `WorkingDirectory` dengan lokasi clone kamu)*
 
@@ -178,9 +176,7 @@ journalctl -u notifyme.service -n 50    # hasil eksekusi terakhir
 | `*-*-* 08,20:00:00` | dua kali sehari — 08:00 & 20:00 |
 | `Mon..Fri *-*-* 09:00:00` | hari kerja jam 09:00 |
 
-> 💡 `Persistent=true` — mesin mati saat jadwal lewat? systemd nge-catch-up otomatis begitu nyala. Cron gak punya fitur ini.
-
-> 💡 Tanpa `vulnx` pun pipeline tetap jalan — alert tetap terkirim, hanya tanpa detail CVE. Tapi jelas: dengan enrichment, kualitas intelijennya naik kelas.
+> Note: Tanpa `vulnx` pun pipeline tetap jalan — alert tetap terkirim, hanya tanpa detail CVE. Tapi jelas: dengan enrichment, kualitas intelijennya naik kelas.
 
 ## 📜 Lisensi
 
