@@ -10,7 +10,7 @@
 
 ---
 
-> ⚡ Setiap hari ratusan CVE baru muncul. Beberapa di antaranya **sedang dieksploitasi aktif** saat kamu membaca kalimat ini. Pertanyaannya bukan *"kenapa terjadi?"* — tapi *"siapa yang tahu duluan: kamu, atau penyerangnya?"*
+> Setiap hari ratusan CVE baru muncul. Beberapa di antaranya **sedang dieksploitasi aktif** saat kamu membaca kalimat ini. Pertanyaannya bukan *"kenapa terjadi?"* — tapi *"siapa yang tahu duluan: kamu, atau penyerangnya?"*
 
 ---
 
@@ -25,12 +25,12 @@ Fakta lapangannya sederhana: **asimetri informasi adalah keuntungan penyerang.**
 
 ## 🔥 Yang bikin ini beda
 
-- 🛰️ **IOC-first.** Berita dipindai sebagai sumber IOC — setiap nomor CVE (`CVE-2026-XXXXX`, termasuk variasi penulisan aneh seperti `cve 2026 xxxxx` atau tanda hubung unicode) jadi sinyal yang bisa ditindaklanjuti.
-- 🕸️ **KEV-aware & PoC-aware.** Alert-nya gak cuma bilang "ada CVE" — dia nunjukin CVSS, severity, status **KEV** (diketahui dieksploitasi aktif), dan **berapa banyak PoC publik** yang beredar. Angka itu bedanya antara "catat dulu" dan "patch SEKARANG".
-- 🔁 **Idempoten by design.** URL artikel unik, `cve_id` unik. CVE yang sama gak pernah alert dua kali. Bisa dijalankan tiap menit tanpa banjir notifikasi.
-- 🗄️ **Zero third-party data flow.** Intelijen tersimpan di SQLite lokal — rekam jejak yang bisa di-forensik dan diaudit. Data kamu gak lewat cloud siapa pun selain SMTP-mu sendiri.
-- 🧩 **Modular kill chain.** Fetch, extract, persist, enrich, notify — tiap tahap satu modul kecil di `src/`. Ganti sumber, ganti kanal alert, upgrade regex: semuanya terisolasi.
-- ⚡ **Three-dependency footprint.** `feedparser` + `yagmail` + `dotenv`. Cukup ringan buat VPS paling murah yang bisa kamu sewa.
+- **IOC-first.** Berita dipindai sebagai sumber IOC — setiap nomor CVE (`CVE-2026-XXXXX`, termasuk variasi penulisan aneh seperti `cve 2026 xxxxx` atau tanda hubung unicode) jadi sinyal yang bisa ditindaklanjuti.
+- **KEV-aware & PoC-aware.** Alert-nya gak cuma bilang "ada CVE" — dia nunjukin CVSS, severity, status **KEV** (diketahui dieksploitasi aktif), dan **berapa banyak PoC publik** yang beredar. Angka itu bedanya antara "catat dulu" dan "patch SEKARANG".
+- **Idempoten by design.** URL artikel unik, `cve_id` unik. CVE yang sama gak pernah alert dua kali. Bisa dijalankan tiap menit tanpa banjir notifikasi.
+- **Zero third-party data flow.** Intelijen tersimpan di SQLite lokal — rekam jejak yang bisa di-forensik dan diaudit. Data kamu gak lewat cloud siapa pun selain SMTP-mu sendiri.
+- **Modular kill chain.** Fetch, extract, persist, enrich, notify — tiap tahap satu modul kecil di `src/`. Ganti sumber, ganti kanal alert, upgrade regex: semuanya terisolasi.
+- **Three-dependency footprint.** `feedparser` + `yagmail` + `dotenv`. Cukup ringan buat VPS paling murah yang bisa kamu sewa.
 
 ## ⚙️ Kill chain-nya
 
@@ -94,10 +94,10 @@ cp .env.example .env
 | `SMTP_SERVER` | `smtp.gmail.com` | SMTP keluar |
 | `SMTP_PORT` | `587` | 587 = STARTTLS · 465 = SSL |
 | `SMTP_SENDER` | `email.example@gmail.com` | identitas pengirim |
-| `SMTP_PASSWORD` | *(App Password)* | 🔑 bukan password akun — App Password |
+| `SMTP_PASSWORD` | *(App Password)* | bukan password akun — App Password |
 | `SMTP_RECEIVER` | `soc@target.com` | tujuan alert |
 
-> 🔐 **OPSEC note:** `.env` berisi kredensial dan sudah masuk `.gitignore`. Jangan pernah mengeksposnya — bukan cuma di commit, tapi juga di screenshot.
+> **Note:** `.env` berisi kredensial dan sudah masuk `.gitignore`. Jangan pernah mengeksposnya — bukan cuma di commit, tapi juga di screenshot.
 
 ### Jalankan
 
