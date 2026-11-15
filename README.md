@@ -1,7 +1,5 @@
 # 🚨 Notifyme
 
-> `>_` **Berita keamanan gak nunggu. Kamu juga seharusnya gak.**
-
 ![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)
 ![Lisensi](https://img.shields.io/badge/Lisensi-MIT-green)
 ![paket](https://img.shields.io/badge/paket-uv-DE5FE9)
